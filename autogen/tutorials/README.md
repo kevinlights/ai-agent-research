@@ -5,12 +5,15 @@
 ### Tools
 - qwen2.5-coder:3b
 - qwen2.5:7b
+- qwen2.5:14b
 - qwen2.5-coder:7b
 - qwen2.5-coder:14b
 - qwq:32b
 - llama3.2:3b
 - mistral:7b
+- mistral-nemo:12b
 - phi4-mini:3.8b
+
 
 ### Vision
 - llava:7b
@@ -27,6 +30,7 @@
 - deepseek-r1:7b
 - deepseek-r1:14b
 - llama3:8b
+- EntropyYue/chatglm3:6b
 
 
 > https://ollama.com/search?c=tools
