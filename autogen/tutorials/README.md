@@ -10,6 +10,7 @@
 - qwq:32b
 - llama3.2:3b
 - mistral:7b
+- phi4-mini:3.8b
 
 ### Vision
 - llava:7b
