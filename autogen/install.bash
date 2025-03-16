@@ -1,0 +1,1 @@
+pip install -U "autogen-agentchat" "autogen-ext[openai,ollama,semantic-kernel-anthropic]" "mcp" json_schema_to_pydantic langchain_experimental
