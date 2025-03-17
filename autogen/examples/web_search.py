@@ -42,7 +42,7 @@ def search_bing(keywords: str, show_ui: bool = False):
 
         page_content = driver.page_source
 
-        with open(".page.html", "w") as f:
+        with open("coding/page.html", "w") as f:
             f.write(page_content)
 
         # print(f'page_content: {page_content}')
@@ -99,3 +99,43 @@ def parse_bing_results(page_content: str):
         pass
     print(f"search results: {len(results)}")
     return results
+
+
+def bing_search(query: str, max_chars: int = 500):
+    from web_search import search_bing, parse_bing_results
+    import requests
+    from bs4 import BeautifulSoup
+    import time
+
+    results = parse_bing_results(search_bing(query, show_ui=True))
+
+    def get_page_content(url: str) -> str:
+        try:
+            response = requests.get(url, timeout=10)
+            soup = BeautifulSoup(response.content, "html.parser")
+            text = soup.get_text(separator=" ", strip=True)
+            words = text.split()
+            content = ""
+            for word in words:
+                if len(content) + len(word) + 1 > max_chars:
+                    break
+                content += " " + word
+            return content.strip()
+        except Exception as e:
+            print(f"Error fetching {url}: {str(e)}")
+            return ""
+
+    enriched_results = []
+    for item in results:
+        body = get_page_content(item["link"])
+        enriched_results.append(
+            {
+                "title": item["title"],
+                "link": item["link"],
+                "snippet": item["snippet"],
+                "body": body,
+            }
+        )
+        time.sleep(1)  # Be respectful to the servers
+
+    return enriched_results

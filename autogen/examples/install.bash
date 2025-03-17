@@ -1,1 +1,1 @@
-pip install yfinance matplotlib pytz numpy pandas python-dotenv requests bs4 selenium akshare
+pip install yfinance matplotlib pytz numpy pandas python-dotenv requests bs4 selenium akshare arxiv
