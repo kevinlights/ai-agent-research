@@ -79,13 +79,13 @@ def parse_bing_results(page_content: str):
         for li in li_list:
             try:
                 a = li.select(".b_tpcn")[0].select("a")[0]
-                link = li.select("h2")[0].select("a")[0].text
+                title = li.select("h2")[0].select("a")[0].text
                 snippet = li.select(".b_caption")[0].select("p")[0].text
                 if "href" in a.attrs:
                     link = a["href"]
                     results.append(
                         {
-                            "title": "",
+                            "title": title,
                             "link": link,
                             "snippet": snippet,
                             "body": "",
