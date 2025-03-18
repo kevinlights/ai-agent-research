@@ -6,6 +6,7 @@
 ```shell
 export OLLAMA_CONTEXT_LENGTH=128000
 export OLLAMA_DEBUG=true
+export OLLAMA_FLASH_ATTENTION=true
 
 ollama serve
 ```
