@@ -1,5 +1,38 @@
 from autogen_core.models import ModelFamily
 from autogen_ext.models.openai import OpenAIChatCompletionClient
+from autogen_core.models import UserMessage, ChatCompletionClient
+
+
+async def chat(msg: str, model_client: ChatCompletionClient):
+    return await model_client.create(messages=[UserMessage(content=msg, source="user")])
+
+
+def llama3_sd_prompt():
+    return OpenAIChatCompletionClient(
+        model="impactframes/llama3_ifai_sd_prompt_mkr_q4km:latest",
+        base_url="http://localhost:11434/v1",
+        api_key="placeholder",
+        model_info={
+            "vision": False,
+            "function_calling": False,
+            "json_output": False,
+            "family": ModelFamily.ANY,
+        },
+    )
+
+
+def llava_7b():
+    return OpenAIChatCompletionClient(
+        model="llava:7b",
+        base_url="http://localhost:11434/v1",
+        api_key="placeholder",
+        model_info={
+            "vision": True,
+            "function_calling": False,
+            "json_output": False,
+            "family": ModelFamily.ANY,
+        },
+    )
 
 
 def llama3_2_3b():

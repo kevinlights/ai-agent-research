@@ -23,6 +23,9 @@
 - nomic-embed-text:latest
 - mxbai-embed-large:335m
 
+### Image Generation
+- impactframes/llama3_ifai_sd_prompt_mkr_q4km
+
 ### Common Chat
 - gemma3:4b
 - phi:2.7b-chat-v2-fp16
