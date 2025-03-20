@@ -92,6 +92,20 @@ def qwen_25_1_5b():
     )
 
 
+def qwen_25_3b():
+    return OpenAIChatCompletionClient(
+        model="qwen2.5:3b",
+        base_url="http://localhost:11434/v1",
+        api_key="placeholder",
+        model_info={
+            "vision": False,
+            "function_calling": True,
+            "json_output": True,
+            "family": ModelFamily.ANY,
+        },
+    )
+
+
 def qwen_25_7b():
     return OpenAIChatCompletionClient(
         model="qwen2.5:7b",
@@ -100,7 +114,7 @@ def qwen_25_7b():
         model_info={
             "vision": False,
             "function_calling": True,
-            "json_output": False,
+            "json_output": True,
             "family": ModelFamily.ANY,
         },
     )
