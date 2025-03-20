@@ -1,6 +1,8 @@
 from zhipuai import ZhipuAI
 import requests
 import base64
+from autogen_ext.models.openai import OpenAIChatCompletionClient
+from autogen_core.models import ModelFamily
 
 
 def draw_image(prompt: str):
@@ -24,3 +26,21 @@ def draw_image_with_b64(prompt: str):
         return base64.b64encode(resp.content).decode("utf-8")
     else:
         return ""
+
+
+def chat_model():
+    api_key = open("api-key").read()
+    if not api_key:
+        raise Exception("please put zhipuai api key to file api-key")
+    client = ZhipuAI(api_key=api_key)  # 请填写您自己的APIKey
+    return OpenAIChatCompletionClient(
+        model="GLM-4-Flash",
+        base_url=client._base_url,
+        api_key=api_key,
+        model_info={
+            "vision": False,
+            "function_calling": True,
+            "json_output": False,
+            "family": ModelFamily.ANY,
+        },
+    )
