@@ -35,17 +35,17 @@ def litellm_proxy(model: str = ""):
     )
 
 
-def nomic_embed_text():
-    return OpenAIChatCompletionClient(
-        model="nomic-embed-text:latest",
-        api_key="placeholder",
-        base_url="http://localhost:11434/v1",
-        model_capabilities={
-            "json_output": True,
-            "vision": True,
-            "function_calling": True,
-        },
-    )
+# def nomic_embed_text():
+#     return OpenAIChatCompletionClient(
+#         model="nomic-embed-text:latest",
+#         api_key="placeholder",
+#         base_url="http://localhost:11434/v1",
+#         model_capabilities={
+#             "json_output": True,
+#             "vision": True,
+#             "function_calling": True,
+#         },
+#     )
 
 
 def llama3_sd_prompt():
