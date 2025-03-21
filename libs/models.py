@@ -21,6 +21,33 @@ def litellm_llama32_1b():
     )
 
 
+def litellm_proxy(model: str = ""):
+    "Mimic OpenAI API using Local LLM Server."
+    return OpenAIChatCompletionClient(
+        model=model,
+        api_key="NotRequiredSinceWeAreLocal",
+        base_url="http://localhost:4000",
+        model_capabilities={
+            "json_output": True,
+            "vision": True,
+            "function_calling": True,
+        },
+    )
+
+
+def nomic_embed_text():
+    return OpenAIChatCompletionClient(
+        model="nomic-embed-text:latest",
+        api_key="placeholder",
+        base_url="http://localhost:11434/v1",
+        model_capabilities={
+            "json_output": True,
+            "vision": True,
+            "function_calling": True,
+        },
+    )
+
+
 def llama3_sd_prompt():
     return OpenAIChatCompletionClient(
         model="impactframes/llama3_ifai_sd_prompt_mkr_q4km:latest",
